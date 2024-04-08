@@ -11,11 +11,12 @@ const parseBodyMiddleware = express.json();
 app.use(parseBodyMiddleware);
 app.use(cors());
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello Samurai!");
-});
 
 const start = async () => {
+  app.get("/", (req: Request, res: Response) => {
+    res.send("Hello Samurai!");
+  });
+
   if (!(await connectToDB())) {
     console.log("stop");
     process.exit(1);
