@@ -20,4 +20,4 @@ const start = async () => {
 };
 start();
 
-export default start;
+export default app;
