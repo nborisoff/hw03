@@ -1,12 +1,7 @@
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
 import { SETTINGS } from "./app/settings";
+import { app } from "./app/app";
 import { connectToDB } from "./db/mongo-db";
-import cors from "cors";
-import {blogRouter} from "./controllers/blogs/routes";
-import {postRouter} from "./controllers/posts/routes";
-
-
-const app = express();
 
 const start = async () => {
   app.get("/", (req: Request, res: Response) => {
@@ -18,12 +13,6 @@ const start = async () => {
     process.exit(1);
     return;
   }
-  const parseBodyMiddleware = express.json();
-  app.use(parseBodyMiddleware);
-  app.use(cors());
-
-  app.use(SETTINGS.PATH.BLOGS, blogRouter);
-  app.use(SETTINGS.PATH.POSTS, postRouter);
 
   app.listen(SETTINGS.PORT, () => {
     console.log(`App listening on port ${SETTINGS.PORT}`);
@@ -31,4 +20,4 @@ const start = async () => {
 };
 start();
 
-export default app;
+export default start;
