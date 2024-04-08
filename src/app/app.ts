@@ -12,3 +12,5 @@ app.use(cors());
 
 app.use(SETTINGS.PATH.BLOGS, blogRouter);
 app.use(SETTINGS.PATH.POSTS, postRouter);
+
+export default app;

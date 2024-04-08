@@ -3,11 +3,11 @@ import { SETTINGS } from "./app/settings";
 import { app } from "./app/app";
 import { connectToDB } from "./db/mongo-db";
 
-const start = async () => {
-  app.get("/", (req: Request, res: Response) => {
-    res.send("Hello Samurai!");
-  });
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello Samurai!");
+});
 
+const start = async () => {
   if (!(await connectToDB())) {
     console.log("stop");
     process.exit(1);
@@ -19,5 +19,3 @@ const start = async () => {
   });
 };
 start();
-
-export default app;
