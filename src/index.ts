@@ -1,7 +1,15 @@
-import { Request, Response } from "express";
+import express, { Request, Response } from "express";
 import { SETTINGS } from "./app/settings";
-import { app } from "./app/app";
 import { connectToDB } from "./db/mongo-db";
+import cors from "cors";
+import {blogRouter} from "./controllers/blogs/routes";
+import {postRouter} from "./controllers/posts/routes";
+
+const app = express();
+
+const parseBodyMiddleware = express.json();
+app.use(parseBodyMiddleware);
+app.use(cors());
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello Samurai!");
@@ -14,8 +22,13 @@ const start = async () => {
     return;
   }
 
+  app.use(SETTINGS.PATH.BLOGS, blogRouter);
+  app.use(SETTINGS.PATH.POSTS, postRouter);
+
   app.listen(SETTINGS.PORT, () => {
     console.log(`App listening on port ${SETTINGS.PORT}`);
   });
 };
 start();
+
+export default app;
