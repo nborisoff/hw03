@@ -6,7 +6,7 @@ import {blogRouter} from "./controllers/blogs/routes";
 import {postRouter} from "./controllers/posts/routes";
 
 
-export const app = express();
+const app = express();
 
 const start = async () => {
   app.get("/", (req: Request, res: Response) => {
@@ -30,3 +30,5 @@ const start = async () => {
   });
 };
 start();
+
+export default app;
