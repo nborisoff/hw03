@@ -1,8 +1,6 @@
 import { req } from "./test-helpers";
 import { ADMIN_AUTH } from "../src/controllers/posts/middlewares";
 import { SETTINGS } from "../src/app/settings";
-import { setDB } from "../src/db/db";
-import {ObjectId} from "mongodb";
 import {connectToDB, postCollection} from "../src/db/mongo-db";
 
 // console.log(process.env.NODE_ENV);

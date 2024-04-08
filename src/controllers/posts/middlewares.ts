@@ -4,9 +4,6 @@ import {
   FieldValidationError,
   validationResult,
 } from "express-validator";
-import { postRepository } from "./postRepository";
-import { db } from "../../db/db";
-import { blogRepository } from "../blogs/blogRepository";
 
 const postTitleInputValidator = body("title")
   .exists()

@@ -2,7 +2,7 @@ import { Collection, Db, MongoClient} from "mongodb";
 import { SETTINGS } from "../app/settings";
 import { BlogDBType } from "../models/blogs";
 import {PostDBType} from "../models/posts";
-
+console.log(SETTINGS.MONGO_URL)
 // получение доступа к бд
 const client: MongoClient = new MongoClient(SETTINGS.MONGO_URL);
 export const db: Db = client.db(SETTINGS.DB_NAME);
