@@ -7,15 +7,15 @@ console.log(process.env.NODE_ENV);
 describe("/blog", () => {
   beforeAll(async () => {
     await connectToDB();
-    await req
-      .delete(`${SETTINGS.PATH.TESTING}/all-data`)
-      .expect(204);
+    // await req
+    //   .delete(`${SETTINGS.PATH.TESTING}/all-data`)
+    //   .expect(204);
   });
 
   const buff2 = Buffer.from(ADMIN_AUTH, "utf8");
   const codedAuth = buff2.toString("base64");
 
-  it("auth: should get empty array", async () => {
+  it("auth: should get blogs array", async () => {
     const res = await req
       .get(SETTINGS.PATH.BLOGS)
       .set({ Authorization: "Basic " + codedAuth })
