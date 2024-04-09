@@ -2,8 +2,9 @@ import express, { Request, Response } from "express";
 import { SETTINGS } from "./app/settings";
 import { connectToDB } from "./db/mongo-db";
 import cors from "cors";
-import {blogRouter} from "./controllers/blogs/routes";
-import {postRouter} from "./controllers/posts/routes";
+import { blogRouter } from "./controllers/blogs/routes";
+import { postRouter } from "./controllers/posts/routes";
+import { testingRouter } from "./controllers/testing/routes";
 
 const app = express();
 
@@ -24,6 +25,7 @@ const start = async () => {
 
   app.use(SETTINGS.PATH.BLOGS, blogRouter);
   app.use(SETTINGS.PATH.POSTS, postRouter);
+  app.use(SETTINGS.PATH.TESTING, testingRouter);
 
   app.listen(SETTINGS.PORT, () => {
     console.log(`App listening on port ${SETTINGS.PORT}`);
