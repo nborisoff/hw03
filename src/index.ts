@@ -11,7 +11,6 @@ const parseBodyMiddleware = express.json();
 app.use(parseBodyMiddleware);
 app.use(cors());
 
-
 const start = async () => {
   app.get("/", (req: Request, res: Response) => {
     res.send("Hello Samurai!");
