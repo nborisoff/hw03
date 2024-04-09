@@ -46,7 +46,15 @@ export const postRepository = {
     return this.mapToOutput(post);
   },
   mapToOutput(post: PostDBType) {
-    const { _id, title, shortDescription, content, blogId, blogName } = post;
+    const {
+      _id,
+      title,
+      shortDescription,
+      content,
+      blogId,
+      blogName,
+      createdAt,
+    } = post;
 
     return {
       id: _id,
@@ -55,6 +63,7 @@ export const postRepository = {
       content,
       blogId,
       blogName,
+      createdAt,
     };
   },
 };
