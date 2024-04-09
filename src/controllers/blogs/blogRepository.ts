@@ -7,7 +7,7 @@ export const blogRepository = {
     const newBlog = {
       ...input,
       createdAt: new Date().toISOString(),
-      isMembership: true,
+      isMembership: false,
       _id: new ObjectId(),
     };
 
@@ -39,12 +39,15 @@ export const blogRepository = {
     return this.mapToOutput(blog);
   },
   mapToOutput(blog: BlogDBType) {
-    const { _id, name, description, websiteUrl } = blog;
+    const { _id, name, description, websiteUrl, isMembership, createdAt } =
+      blog;
     return {
       id: _id,
       name,
       description,
       websiteUrl,
+      isMembership,
+      createdAt,
     };
   },
 };
