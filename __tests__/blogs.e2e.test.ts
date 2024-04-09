@@ -7,6 +7,7 @@ console.log(process.env.NODE_ENV);
 describe("/blog", () => {
   beforeAll(async () => {
     await connectToDB();
+    await req.delete(`${SETTINGS.PATH.TESTING}/all-data`).set({ Authorization: "Basic " + codedAuth }).expect(204);
   });
 
   const buff2 = Buffer.from(ADMIN_AUTH, "utf8");

@@ -3,7 +3,7 @@ import { HTTP_STATUSES } from "../../app/settings";
 import { blogCollection, postCollection } from "../../db/mongo-db";
 
 export const clearDb = async (req: Request, res: Response) => {
-  await blogCollection.drop();
-  await postCollection.drop();
+  await blogCollection.deleteMany({});
+  await postCollection.deleteMany({});
   res.sendStatus(HTTP_STATUSES.NO_CONTENT_204);
 };
