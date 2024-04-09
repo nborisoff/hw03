@@ -4,6 +4,8 @@ import {
   FieldValidationError,
   validationResult,
 } from "express-validator";
+import { blogRepository } from "../blogs/blogRepository";
+import { ObjectId } from "mongodb";
 
 const postTitleInputValidator = body("title")
   .exists()
@@ -49,15 +51,15 @@ export const postInputValidators = [
   postShortDescriptionInputValidator,
   postContentInputValidator,
   postBlogIdInputValidator,
-  // body("blogId")
-  //   .custom(async (blogId, { req }) => {
-  //     const blog = await blogRepository.find(blogId);
-  //
-  //     if (!blog) {
-  //       return Promise.reject("blog not found");
-  //     }
-  //   })
-  //   .withMessage("blog not found"),
+  body("blogId")
+    .custom(async (blogId, { req }) => {
+      const blog = await blogRepository.find(new ObjectId(blogId));
+
+      if (!blog) {
+        return Promise.reject("blog not found");
+      }
+    })
+    .withMessage("blog not found"),
 ];
 
 export const inputCheckErrorsMiddleware = (
@@ -67,7 +69,7 @@ export const inputCheckErrorsMiddleware = (
 ) => {
   const e = validationResult(req);
   const errors = e.array({ onlyFirstError: true });
-
+  console.log(errors);
   if (errors.length) {
     res.status(400).json({
       errorsMessages: errors.map((error) => {

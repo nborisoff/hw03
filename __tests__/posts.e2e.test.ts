@@ -30,7 +30,7 @@ describe("/post", () => {
       title: "testT",
       shortDescription: "testSD",
       content: "testC",
-      blogId: "66150620eb42d5165c1214ef",
+      blogId: "66150620eb42d5165c1214e4",
     };
 
     await req
