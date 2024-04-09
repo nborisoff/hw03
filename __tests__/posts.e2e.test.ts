@@ -29,7 +29,7 @@ describe("/post", () => {
       title: "testT",
       shortDescription: "testSD",
       content: "testC",
-      blogId: "66142c4a4dd493bacd7cee31",
+      blogId: "66150620eb42d5165c1214ef",
     };
 
     await req
@@ -37,7 +37,6 @@ describe("/post", () => {
       .set({ Authorization: "Basic " + codedAuth })
       .send(newPost)
       .expect(201);
-
   });
 
   it(`should update post`, async () => {
