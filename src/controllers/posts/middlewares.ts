@@ -81,7 +81,7 @@ export const inputCheckErrorsMiddleware = (
   next();
 };
 
-export const ADMIN_AUTH = "quackin:passw1rd"; // get from SETTINGS
+export const ADMIN_AUTH = "admin:qwerty"; // get from SETTINGS
 export const authMiddleware = (
   req: Request,
   res: Response,

@@ -7,7 +7,9 @@ console.log(process.env.NODE_ENV);
 describe("/blog", () => {
   beforeAll(async () => {
     await connectToDB();
-    await req.delete(`${SETTINGS.PATH.TESTING}/all-data`).set({ Authorization: "Basic " + codedAuth }).expect(204);
+    await req
+      .delete(`${SETTINGS.PATH.TESTING}/all-data`)
+      .expect(204);
   });
 
   const buff2 = Buffer.from(ADMIN_AUTH, "utf8");
@@ -28,12 +30,10 @@ describe("/blog", () => {
   });
 
   it("should create blog", async () => {
-    await blogCollection.drop();
-
     const newBlog = {
-      name: "blog1",
-      description: "d1",
-      websiteUrl: "https://blog1.com",
+      name: "new blog",
+      websiteUrl: "https://someurl.com",
+      description: "description",
     };
 
     await req
@@ -44,7 +44,10 @@ describe("/blog", () => {
   });
 
   it("should find blog", async () => {
-    await req.get(`${SETTINGS.PATH.BLOGS}/6612de7120b2e2dfd45a9d95`).set({ Authorization: "Basic " + codedAuth }).expect(200);
+    await req
+      .get(`${SETTINGS.PATH.BLOGS}/6612de7120b2e2dfd45a9d95`)
+      .set({ Authorization: "Basic " + codedAuth })
+      .expect(200);
   });
 
   it(`should update blog`, async () => {
